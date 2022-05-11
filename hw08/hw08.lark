@@ -1,0 +1,33 @@
+link: link_first
+
+?link_first: "Link(" NUMBER  ")" | /","?/ link_rest ")"
+
+?link_rest: "Link(" NUMBER | "Link(" ","? link_first ")"
+
+%ignore /\s+/
+%import common.NUMBER
+
+
+tree_node: "null"
+
+
+?label: "null"
+
+branches: "null"
+
+%ignore /\s+/
+%import common.NUMBER
+
+
+rstring: "r\"" regex* "\""
+
+?regex: character | word
+
+character: LETTER | NUMBER
+word: WORD
+
+%ignore /\s+/
+%import common.LETTER
+%import common.NUMBER
+%import common.WORD
+
